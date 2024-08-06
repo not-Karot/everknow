@@ -5,7 +5,7 @@ This guide will help you deploy Python functions on Google Cloud Run using Prefe
 ## 📋 Prerequisites
 
 - Prefect Cloud account (free tier is fine)
-- Google Cloud Platform (GCP) account
+- Google Cloud Platform account (might incur in charges)
 - Python environment (preferably a conda environment)
 - gcloud CLI
 
