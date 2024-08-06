@@ -34,6 +34,7 @@ Whether you're here to explore, learn, or simply out of curiosity, I hope you fi
   - [CI/CD](./devops/ci-cd/)
 - [Coding](./programming/)
   - [Prefect](./coding/prefect/)
+  - [Python](./coding/python/)
 - [Machine Learning](./data-engineering/)
 - [Linux](./linux/)
 - [Projects](./projects/)
