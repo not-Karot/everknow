@@ -55,7 +55,6 @@ COPY poetry.lock .
 COPY requirements.txt .
 COPY setup.cfg .
 COPY setup.py .
-COPY xmatics .
 
 RUN apt-get update && apt-get install -y libarchive13
 RUN conda install -c conda-forge mamba
