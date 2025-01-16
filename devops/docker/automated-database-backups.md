@@ -135,6 +135,39 @@ Before we begin, make sure you have:
 - Ensure that the GCS bucket is properly mounted before running the backup.
 - Verify that the Docker container is running and accessible.
 
+
+### Sudo Permission Issues
+If you experience issues with sudo permissions (password being requested when it shouldn't), you can try creating a separate sudoers file:
+
+1. Create a new file in the sudoers.d directory:
+   ```bash
+   sudo sh -c 'echo "your_username ALL=(ALL:ALL) NOPASSWD: /usr/bin/docker exec -t your_docker_container pg_dumpall -c -U postgres" > /etc/sudoers.d/docker-backup'
+   ```
+
+2. Set the correct permissions:
+   ```bash
+   sudo chmod 440 /etc/sudoers.d/docker-backup
+   ```
+
+3. Remove the original rule from the main sudoers file using `sudo visudo` if it exists.
+
+## 🔄 Restoring Backups
+
+To restore a database backup, use the following command:
+
+```bash
+cat ~/Documents/auto-dump-db/mount_bucket_dir/produzione-backup-database/<last_dump>.sql | sudo docker exec -i your_docker_container psql -U postgres
+```
+
+Important notes about restoration:
+- Make sure to replace `<last_dump>` with the actual backup file name
+- The `-i` flag is crucial for the restore operation (different from the `-t` used in backup)
+- Consider taking a backup of the current state before restoring
+- Ensure you have enough disk space for the restore operation
+- The restoration process might take some time depending on the database size
+
+
+
 ## 🛡️ Security Considerations
 
 - Keep your service account key file secure and restrict its permissions.
